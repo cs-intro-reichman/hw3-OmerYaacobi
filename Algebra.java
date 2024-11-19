@@ -24,44 +24,99 @@ public class Algebra {
 	}  
 
 	// Returns x1 + x2
-	public static int plus(int x1, int x2) {
+	public static int plus(double x1, double x2) {
 		// Replace the following statement with your code
-		return 0;
+		 
+		int resultPlus = (int) x1;
+		for (int i = 0; i < x2; i++){
+			resultPlus++;
+		}
+		 
+		return (int) resultPlus;
 	}
 
 	// Returns x1 - x2
-	public static int minus(int x1, int x2) {
+	public static int minus(int x1, double x2) {
 		// Replace the following statement with your code
-		return 0;
+
+		int resultMinus = x1;
+		for (int i = 0; i < x2; i++){
+			resultMinus--;
+		}
+		
+		return (int) resultMinus;
 	}
 
 	// Returns x1 * x2
-	public static int times(int x1, int x2) {
+	public static int times(int x1, double x2) {
         // Replace the following statement with your code
-		return 0;
+
+		int resultMulti = 0;
+		for (int i = 0; i < x2; i++){
+			resultMulti= Algebra.plus(resultMulti, x1);
+		}
+		
+		return (int) resultMulti;
 	}
 
 	// Returns x^n (for n >= 0)
-	public static int pow(int x, int n) {
+	public static int pow(double x, int n) {
 		// Replace the following statement with your code
-		return 0;
+
+		int resultPower = 1;
+		for (int i = 0; i < n; i++){
+			resultPower = Algebra.times(resultPower, x);
+		}
+
+		return (int) resultPower;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
         // Replace the following statement with your code
-		return 0;
-	}
+		if (x2 == 0) {
+		System.out.println("Cant divide by 0");}
+		
+			int resultDivide = 0;
+			while (x1 >= x2) {
+			x1 = Algebra.minus(x1, x2);
+			resultDivide ++ ; 
+		}
+			return resultDivide;
+		
+		
+		}
+		
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
         // Replace the following statement with your code
-		return 0;
+		
+		if (x2 == 0) {
+			System.out.println("Cant divide by 0");}
+			
+				int resultDivide = 0;
+				while (x1 >= x2) {
+				x1 = Algebra.minus(x1, x2);
+				resultDivide ++ ; 
+			}
+			int resultMod= x1;
+
+		return resultMod;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
         // Replace the following statement with your code
-		return 0;
+		double resultSqrt = 1;
+		while (Algebra.pow(resultSqrt, 2) < x) {
+			resultSqrt++;
+			 if (resultSqrt > x) break;
+		}
+		if (Algebra.pow(resultSqrt, 2) != x){
+			resultSqrt--;
+		}
+		
+		return (int) resultSqrt;
 	}	  	  
 }
