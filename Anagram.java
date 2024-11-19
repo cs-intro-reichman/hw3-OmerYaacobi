@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
 
 /** Functions for checking if a given string is an anagram. */
 public class Anagram {
@@ -15,7 +18,7 @@ public class Anagram {
 		System.out.println("silent and " + randomAnagram("silent") + " are anagrams.");
 		
 		// Performs a stress test of randomAnagram 
-		String str = "1234567";
+		String str = "Omer 25";
 		Boolean pass = true;
 		//// 10 can be changed to much larger values, like 1000
 		for (int i = 0; i < 10; i++) {
@@ -30,6 +33,25 @@ public class Anagram {
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
 		// Replace the following statement with your code
+		str1 = str1.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        str2 = str2.replaceAll("[^a-zA-Z]", "").toLowerCase();
+
+		if (str1.length() != str2.length()) {
+			return false;
+		}
+		char [] letters1 = str1.toCharArray();
+		char [] letters2 = str2.toCharArray();
+
+		Arrays.sort(letters1);
+		Arrays.sort(letters2);
+
+		String str1String = new String(letters1);
+		String str2String = new String(letters2);
+
+		if (str1String.equals(str2String)){
+			return true;
+		}
+		
 		return false;
 	}
 	   
@@ -38,6 +60,10 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	private static String preProcess(String str) {
 		// Replace the following statement with your code
+
+		str = str.replaceAll("[^a-zA-Z]", "").toLowerCase();
+       
+
 		return str;
 	} 
 	   
@@ -45,6 +71,18 @@ public class Anagram {
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
 		// Replace the following statement with your code
-		return str;
+
+		str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+		
+		char [] digits = str.toCharArray();
+		int n = str.length();
+        for (int i = 0; i < n; i++) {
+            int randomIndex = (int) (Math.random() * n);
+		char changed = digits [i];
+		digits [i] = digits [randomIndex];
+		digits [randomIndex] = changed;
+		}
+		String newString = new String(digits);
+		return newString;
 	}
 }
