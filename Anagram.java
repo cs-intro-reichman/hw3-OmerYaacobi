@@ -18,7 +18,7 @@ public class Anagram {
 		System.out.println("silent and " + randomAnagram("silent") + " are anagrams.");
 		
 		// Performs a stress test of randomAnagram 
-		String str = "Omer 25";
+		String str = "1234567";
 		Boolean pass = true;
 		//// 10 can be changed to much larger values, like 1000
 		for (int i = 0; i < 10; i++) {
@@ -42,11 +42,11 @@ public class Anagram {
 		char [] letters1 = str1.toCharArray();
 		char [] letters2 = str2.toCharArray();
 
-		Arrays.sort(letters1);
+		Arrays.sort(letters1); 
 		Arrays.sort(letters2);
 
-		String str1String = new String(letters1);
-		String str2String = new String(letters2);
+		String str1String = new String (letters1);
+		String str2String = new String (letters2);
 
 		if (str1String.equals(str2String)){
 			return true;
@@ -82,7 +82,7 @@ public class Anagram {
 		digits [i] = digits [randomIndex];
 		digits [randomIndex] = changed;
 		}
-		String newString = new String(digits);
+		String newString = new String (digits);
 		return newString;
 	}
 }

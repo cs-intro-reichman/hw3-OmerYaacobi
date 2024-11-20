@@ -100,6 +100,7 @@ public class Algebra {
 				x1 = Algebra.minus(x1, x2);
 				resultDivide ++ ; 
 			}
+			
 			int resultMod= x1;
 
 		return resultMod;
