@@ -32,27 +32,35 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
+		
 		str1 = preProcess(str1);
         str2 = preProcess(str2);
 
+		//remove spaces:
+		while (str1.indexOf(' ')  != -1) {
+			str1 = str1.substring(0,str1.indexOf(' ')) + str1.substring(str1.indexOf(' ') + 1);
+		}
+		while (str2.indexOf(' ')  != -1) {
+			str2 = str2.substring(0,str2.indexOf(' ')) + str2.substring(str2.indexOf(' ') + 1);
+		}
+		
 		if (str1.length() != str2.length()) {
 			return false;
 		}
-		char [] letters1 = str1.toCharArray();
-		char [] letters2 = str2.toCharArray();
+		String substr2 = str2;
+		for (int i = 0; i < str1.length(); i++){
+			char c = str1.charAt(i);
+			int j = substr2.indexOf(c);
 
-		Arrays.sort(letters1); 
-		Arrays.sort(letters2);
-
-		String str1String = new String (letters1);
-		String str2String = new String (letters2);
-
-		if (str1String.equals(str2String)){
-			return true;
+			if (j == -1){
+				return false;
+			}
+			substr2 = substr2.substring(0, j) + substr2.substring(j+1);
 		}
-		
+		if (substr2.length() != 0){
 		return false;
+		} else 
+		return true;
 			}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
@@ -60,32 +68,27 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	private static String preProcess(String str) {
 		// Replace the following statement with your code
-		String sym = " ?!";
-		String strOut = "";
+			
+		
 		int i = 0;
+		String strLow = "";
+		String up = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String low = "abcdefghijklmnopqrstuvwxyz";
+		String digitsSpace = " 1234567890";
 		while (i < str.length()) {
 			char c = str.charAt(i);
-			if (sym.indexOf(c) == -1) {
-				strOut = strOut + c;
+			if (low.indexOf(c) >= 0 || digitsSpace.indexOf(c) >= 0) {
+				strLow = strLow + c;
 			}
-			i++;
-		}
-		i = 0;
-		String strOutLow = "";
-		String up = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		while (i < strOut.length()) {
-			char c = strOut.charAt(i);
-			if (up.indexOf(c) == -1) {
-				strOutLow = strOutLow + c;
-			}
-		else { c = (char) (c + 32);	
-		strOutLow = strOutLow + c;
+			if (up.indexOf(c) >= 0) {
+			c = (char) (c + 32);	
+			strLow = strLow + c;
 		}
 		i++;
 		}
-
-		return strOutLow;
-	} 
+		return strLow;
+	}
+	 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
@@ -93,16 +96,14 @@ public class Anagram {
 		// Replace the following statement with your code
 
 		str = preProcess(str);
-		
-		char [] digits = str.toCharArray();
-		int n = str.length();
-        for (int i = 0; i < n; i++) {
-            int randomIndex = (int) (Math.random() * n);
-		char changed = digits [i];
-		digits [i] = digits [randomIndex];
-		digits [randomIndex] = changed;
+		String random = "";
+		int i;
+		while (str.length() > 0) {
+			i = (int) (Math.random() * str.length());
+			random = random + str.charAt(i);
+			str = str.substring(0, i) + str.substring(i+1);
 		}
-		String newString = new String (digits);
-		return newString;
+		
+		return random;
 	}
 }

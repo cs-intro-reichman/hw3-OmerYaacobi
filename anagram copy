@@ -1,0 +1,26 @@
+str = str.replaceAll("[^a-zA-Z]", "").toLowerCase();
+       
+
+		return str;
+
+
+        str1 = str1.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        str2 = str2.replaceAll("[^a-zA-Z]", "").toLowerCase();
+
+		if (str1.length() != str2.length()) {
+			return false;
+		}
+		char [] letters1 = str1.toCharArray();
+		char [] letters2 = str2.toCharArray();
+
+		Arrays.sort(letters1); 
+		Arrays.sort(letters2);
+
+		String str1String = new String (letters1);
+		String str2String = new String (letters2);
+
+		if (str1String.equals(str2String)){
+			return true;
+		}
+		
+		return false;

@@ -15,7 +15,7 @@ public class LoanCalc {
 		System.out.println("Loan = " + loan + ", interest rate = " + rate + "%, periods = " + n);
 
 		// Computes the ending balance of the loan, given a periodical payment
-		double payment = 10000;
+		double payment = 10000.0;
 		double endBalance = endBalance(loan, rate, n, payment);
 		System.out.println("If your periodical payment is " + payment + ", your ending balance is: " + (int) endBalance);
 		
