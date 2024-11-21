@@ -92,6 +92,9 @@ public class Anagram {
 		// Replace the following statement with your code
 
 		str = preProcess(str);
+		while (str.indexOf(' ')  != -1) {
+			str = str.substring(0,str.indexOf(' ')) + str.substring(str.indexOf(' ') + 1);
+		}
 		String random = "";
 		int i;
 		while (str.length() > 0) {
