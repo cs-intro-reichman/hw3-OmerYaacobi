@@ -7,12 +7,14 @@ public class Algebra {
 	public static void main(String args[]) {
 	    // Tests some of the operations
 	    System.out.println(plus(2,3));   // 2 + 3
+		System.out.println(plus(2,-3));   // 2 + -3
 	    System.out.println(minus(7,2));  // 7 - 2
    		System.out.println(minus(2,7));  // 2 - 7
+		   System.out.println(minus(2,-7));  // 2 - -7
  		System.out.println(times(3,4));  // 3 * 4
 		 System.out.println(times(3,-4));  // 3 * -4
 		 System.out.println(times(-3,4));  // -3 * 4
-		 System.out.println(times(-3,-4));  // 3 * 4
+		 System.out.println(times(-3,-4));  // -3 * -4
    		System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
    		System.out.println(pow(5,3));      // 5^3
    		System.out.println(pow(3,5));      // 3^5
@@ -183,13 +185,29 @@ public class Algebra {
 		if (x2 == 0) {
 			System.out.println("Cant divide by 0");}
 			
+			int i = x1;
+			int j = x2;
+			if (i < 0) {
+				x1 = -x1;
+			}
+			if (j < 0) {
+				x2 = -x2;
+			}
 				
 				while (x1 >= x2) {
 				x1 = Algebra.minus(x1, x2);
 				}
 			
 			int resultMod= x1;
-
+			if (j > 0 && i < 0){
+				resultMod = x2 -resultMod;
+			}
+			if (j < 0 && i > 0) {
+				resultMod = -(x2 - resultMod);
+			}
+			if (j < 0 && i < 0) {
+				resultMod = -resultMod;
+			}
 		return resultMod;
 	}	
 
