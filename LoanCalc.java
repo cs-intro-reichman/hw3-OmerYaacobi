@@ -36,7 +36,7 @@ public class LoanCalc {
 		 
 		double endBalance = loan;
 		for (int i = 0; i < n; i++){
-			endBalance = (endBalance - payment) * (1 + rate);
+			endBalance = (endBalance - payment) * (1 + rate/100);
 		}
 		
 		return endBalance;
