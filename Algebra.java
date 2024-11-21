@@ -95,11 +95,10 @@ public class Algebra {
 		if (x2 == 0) {
 			System.out.println("Cant divide by 0");}
 			
-				int resultDivide = 0;
+				
 				while (x1 >= x2) {
 				x1 = Algebra.minus(x1, x2);
-				resultDivide ++ ; 
-			}
+				}
 			
 			int resultMod= x1;
 
