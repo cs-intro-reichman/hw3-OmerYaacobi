@@ -33,8 +33,8 @@ public class Anagram {
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
 		// Replace the following statement with your code
-		str1 = str1.replaceAll("[^a-zA-Z]", "").toLowerCase();
-        str2 = str2.replaceAll("[^a-zA-Z]", "").toLowerCase();
+		str1 = preProcess(str1);
+        str2 = preProcess(str2);
 
 		if (str1.length() != str2.length()) {
 			return false;
@@ -53,18 +53,38 @@ public class Anagram {
 		}
 		
 		return false;
-	}
+			}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	private static String preProcess(String str) {
 		// Replace the following statement with your code
+		String sym = " ?!";
+		String strOut = "";
+		int i = 0;
+		while (i < str.length()) {
+			char c = str.charAt(i);
+			if (sym.indexOf(c) == -1) {
+				strOut = strOut + c;
+			}
+			i++;
+		}
+		i = 0;
+		String strOutLow = "";
+		String up = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		while (i < strOut.length()) {
+			char c = strOut.charAt(i);
+			if (up.indexOf(c) == -1) {
+				strOutLow = strOutLow + c;
+			}
+		else { c = (char) (c + 32);	
+		strOutLow = strOutLow + c;
+		}
+		i++;
+		}
 
-		str = str.replaceAll("[^a-zA-Z]", "").toLowerCase();
-       
-
-		return str;
+		return strOutLow;
 	} 
 	   
 	// Returns a random anagram of the given string. The random anagram consists of the same
@@ -72,7 +92,7 @@ public class Anagram {
 	public static String randomAnagram(String str) {
 		// Replace the following statement with your code
 
-		str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+		str = preProcess(str);
 		
 		char [] digits = str.toCharArray();
 		int n = str.length();

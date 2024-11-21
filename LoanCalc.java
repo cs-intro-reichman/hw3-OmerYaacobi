@@ -36,7 +36,7 @@ public class LoanCalc {
 		 
 		double endBalance = loan;
 		for (int i = 0; i < n; i++){
-			endBalance = (endBalance - payment) * rate;
+			endBalance = (endBalance - payment) * (1 + rate);
 		}
 		
 		return endBalance;
@@ -69,7 +69,7 @@ public class LoanCalc {
 	// the number of periods (n), and epsilon, the approximation's accuracy
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
-        // Replace the following statement with your code
+       
 		int itr2Counter = 0;
 		double highLimit = loan; 
 		double lowLimiit = loan / n;
