@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
 
 /** Functions for checking if a given string is an anagram. */
 public class Anagram {
@@ -57,9 +54,8 @@ public class Anagram {
 			}
 			substr2 = substr2.substring(0, j) + substr2.substring(j+1);
 		}
-		if (substr2.length() != 0){
-		return false;
-		} else 
+		
+	
 		return true;
 			}
 	   
