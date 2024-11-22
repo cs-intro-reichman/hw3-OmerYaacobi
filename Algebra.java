@@ -150,10 +150,10 @@ public class Algebra {
 	}
 
 	// Returns the integer part of x1 / x2 
-	public static double div(int x1, int x2) {
+	public static int div(int x1, int x2) {
         // Replace the following statement with your code
 		if (x2 == 0) {
-		return Double.NaN;
+		return (int) Double.NaN;
 	}
 		
 			int resultDivide = 0;
@@ -193,18 +193,18 @@ public class Algebra {
 			resultDivide ++ ; 
 		}
 	}
-			return  resultDivide;
+			return (int) resultDivide;
 		
 		}
 	
 		
 
 	// Returns x1 % x2
-	public static double mod(int x1, int x2) {
+	public static int mod(int x1, int x2) {
         // Replace the following statement with your code
 		
 		if (x2 == 0) {
-			return Double.NaN;}
+			return (int) Double.NaN;}
 			
 			int i = x1;
 			int j = x2;
@@ -233,11 +233,11 @@ public class Algebra {
 	}	
 
 	// Returns the integer part of sqrt(x) 
-	public static double sqrt(int x) {
+	public static int sqrt(int x) {
         // Replace the following statement with your code
 		
 		if (x < 0){
-			return Double.NaN;
+			return (int) Double.NaN;
 		}
 		double resultSqrt = 0;
 		while (Algebra.pow(resultSqrt, 2) < x) {
