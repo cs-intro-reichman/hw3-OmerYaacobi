@@ -30,8 +30,8 @@ public class Algebra {
    		System.out.println(pow(5,3));      // 
 	System.out.println("3^5 =");
    		System.out.println(pow(3,5));      // 
-	System.out.println("12 / 3 =");
-   		System.out.println(div(12,3));   //
+	System.out.println("12 / 0 =");
+   		System.out.println(div(12,0));   //
 	System.out.println("5 / 5 =");     
    		System.out.println(div(5,5));    //  
 	System.out.println("5 / -5 =");
@@ -193,7 +193,7 @@ public class Algebra {
 			resultDivide ++ ; 
 		}
 	}
-			return (int) resultDivide;
+			return  resultDivide;
 		
 		}
 	
@@ -233,11 +233,11 @@ public class Algebra {
 	}	
 
 	// Returns the integer part of sqrt(x) 
-	public static int sqrt(int x) {
+	public static double sqrt(int x) {
         // Replace the following statement with your code
 		
 		if (x < 0){
-			return 0;
+			return Double.NaN;
 		}
 		double resultSqrt = 0;
 		while (Algebra.pow(resultSqrt, 2) < x) {
