@@ -1,7 +1,7 @@
 // Computes the periodical payment necessary to pay a given loan.
 public class LoanCalc {
     
-    static double epsilon = 0.01;  // Approximation accuracy
+    static double epsilon = 0.001;  // Approximation accuracy
     static int iterationCounter;    // Number of iterations 
     
     // Gets the loan data and computes the periodical payment.
@@ -17,7 +17,6 @@ public class LoanCalc {
         // Computes the ending balance of the loan, given a periodical payment
         double payment = 10000.0;
         double endBalance = endBalance(loan, rate, n, payment);
-        System.out.println("If your periodical payment is " + payment + ", your ending balance is: " + (int) endBalance);
         
         // Computes the periodical payment using brute force search
         System.out.print("\nPeriodical payment, using brute force: ");
@@ -49,7 +48,7 @@ public class LoanCalc {
     // Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
         
-        double increment = 0.1;
+        double increment = 0.001;
         int itrCounter = 0;
         double payment = loan / n;
         while (endBalance(loan, rate, n, payment) > epsilon) {
